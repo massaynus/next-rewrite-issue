@@ -6,7 +6,11 @@ export function middleware(req: NextRequest) {
         console.log('REQUEST:', req.url)
         console.warn('PATHNAME:', req.nextUrl.pathname);
 
-        return NextResponse.rewrite(req.nextUrl.pathname.replace('/proxy', 'https://jsonplaceholder.typicode.com/todos'))
+        const url = req.nextUrl.pathname.replace('/proxy', 'https://jsonplaceholder.typicode.com/todos');
+
+        console.log('REWRITTEN TO: ', url)
+
+        return NextResponse.rewrite(url)
     }
 
     return NextResponse.next()
