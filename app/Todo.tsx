@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 // This will fail to execute to fetch
-const failedUrl = '/app/en/proxy/23';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
-const successUrl = '/proxy/23';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
+const failedUrl = '/mj-builder/en/proxy/30';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
+const successUrl = '/proxy/30';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
 
 /**
  * In Logs both are successfully rewritten to the correct URL but one fails to execute
@@ -51,6 +51,10 @@ export default function Todo() {
 
     return (
         <>
+            <h3>{JSON.stringify({ failedUrl, successUrl })}</h3>
+            <br />
+            <br />
+            <br />
             <h1>Failure JSON: </h1>
             <pre>{fJson}</pre>
             <br />
