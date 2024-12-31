@@ -3,6 +3,7 @@
  */
 const nextConfig = {
   reactStrictMode: false,
+  // basePath: '/app',
   basePath: '/mj-builder',
   i18n: {
     locales: ['en', 'gc'],
