@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 // This will fail to execute to fetch
-const failedUrl = '/mj-builder/en/proxy/30';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
-const successUrl = '/proxy/30';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
+const failedUrl = '/mj-builder/en/proxy/16';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
+const successUrl = '/proxy/16';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
 
 /**
  * In Logs both are successfully rewritten to the correct URL but one fails to execute
@@ -22,7 +22,10 @@ const successUrl = '/proxy/30';   // should be rewritten to  'https://jsonplaceh
 async function fetchUrl(url: string): Promise<string> {
     console.log('Fetching URL: ', { url })
     const response = await fetch(url)
-    return JSON.stringify(await response.json(), null, 2)
+    if (response.ok)
+        return JSON.stringify(await response.json(), null, 2)
+
+    else throw new Error(`Failed due to status code: [${response.status}]`)
 }
 
 export default function Todo() {
@@ -35,14 +38,16 @@ export default function Todo() {
 
                 try {
                     setFJson(await fetchUrl(failedUrl))
-                } catch (_) {
+                } catch (error) {
                     console.log('Failed to fetch the URL:', { failedUrl })
+                    setFJson(('message' in error ? error.message : JSON.stringify(error, null, 2)) as unknown as string)
                 }
 
                 try {
                     setSJson(await fetchUrl(successUrl))
-                } catch (_) {
+                } catch (error) {
                     console.log('Failed to fetch the URL:', { successUrl })
+                    setSJson(('message' in error ? error.message : JSON.stringify(error, null, 2)) as unknown as string)
                 }
             }
         )()
