@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 // This will fail to execute to fetch
-const failedUrl = '/mj-builder/en/proxy/16';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
-const successUrl = '/proxy/16';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
+const failedUrl = '/mj-builder/en/proxy/22';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
+const successUrl = '/proxy/22';   // should be rewritten to  'https://jsonplaceholder.typicode.com/todos/7'
 
 /**
  * In Logs both are successfully rewritten to the correct URL but one fails to execute
